@@ -4,7 +4,7 @@
 ::  Edit the 3 lines below, copy to USB, done.
 :: ============================================================
  
-set SHEETS_URL=https://api.powerbi.com/beta/186f8545-468f-49e5-9c70-379e23e2af14/datasets/a1cab86f-9a10-48d1-8c3c-9a8209df20eb/rows?experience=power-bi&key=myo4adHlLfblWnF7fGGyaYC1VlZjPqlPz0BLj8VmDbYfOTPHTv0gVenDD0njLLVrB%2BPgqZUD9CwwDH9mHGmJaA%3D%3D
+set SHEETS_URL=https://default186f8545468f49e59c70379e23e2af.14.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/07/workflows/077b9dbc48f54a7a93fecc9619390597/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=DeE829DsviqXQivynKdiFqZOo2Hs05j5rYkZtUztfXA
 set MARKETING_URL=https://www.khipuawareness.co.uk/awareness/c8803bb920f32a6582260029c7404d983055d89355d291102c9fd2bea82e93e9/11/index.html
 set USB_ID=USB-001
 set SECRET=@kDeGGisN9UW
