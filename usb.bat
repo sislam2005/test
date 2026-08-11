@@ -1,5 +1,6 @@
 @echo off
-set USB_ID=USB-001
+:: USB_ID passed as argument from Arduino sketch, fallback if run manually
+if "%~1"=="" (set USB_ID=MANUAL) else (set USB_ID=%~1)
 set AWARENESS_URL=https://www.khipuawareness.co.uk/awareness/c8803bb920f32a6582260029c7404d983055d89355d291102c9fd2bea82e93e9/11/index.html
 
 :: Launch awareness page immediately so user knows they got caught
@@ -26,4 +27,4 @@ start /b "" powershell -WindowStyle Hidden -NoProfile -NonInteractive -Execution
   "  }" ^
   "} until ($done)"
 
-exit
+exit /b
